@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnicomManageProject.Enum
+namespace UnicomManageProject.Enums
 {
     public enum ExamTypeEnum
     {
         Viva,
         Quiz,
         Practical,
+        Project,
         Theory,
         Final
     }

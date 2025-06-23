@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.mngttbtn = new System.Windows.Forms.Button();
+            this.mngmarksbtn = new System.Windows.Forms.Button();
+            this.mngexambtn = new System.Windows.Forms.Button();
+            this.mngcoursebtn = new System.Windows.Forms.Button();
+            this.mnglecturerbtn = new System.Windows.Forms.Button();
+            this.mngstaffbtn = new System.Windows.Forms.Button();
+            this.mngstudentbtn = new System.Windows.Forms.Button();
+            this.mngattendacebtn = new System.Windows.Forms.Button();
+            this.mngnoticebtn = new System.Windows.Forms.Button();
+            this.noticeboardbtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.logoutbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,95 +61,105 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Hi Admin, ";
             // 
-            // button11
+            // mngttbtn
             // 
-            this.button11.Location = new System.Drawing.Point(43, 407);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(158, 23);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "MANAGE TIMETABLE";
-            this.button11.UseVisualStyleBackColor = true;
+            this.mngttbtn.Location = new System.Drawing.Point(43, 407);
+            this.mngttbtn.Name = "mngttbtn";
+            this.mngttbtn.Size = new System.Drawing.Size(158, 23);
+            this.mngttbtn.TabIndex = 10;
+            this.mngttbtn.Text = "MANAGE TIMETABLE";
+            this.mngttbtn.UseVisualStyleBackColor = true;
+            this.mngttbtn.Click += new System.EventHandler(this.mngttbtn_Click);
             // 
-            // button10
+            // mngmarksbtn
             // 
-            this.button10.Location = new System.Drawing.Point(43, 365);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(158, 23);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "MANAGE MARKS";
-            this.button10.UseVisualStyleBackColor = true;
+            this.mngmarksbtn.Location = new System.Drawing.Point(43, 365);
+            this.mngmarksbtn.Name = "mngmarksbtn";
+            this.mngmarksbtn.Size = new System.Drawing.Size(158, 23);
+            this.mngmarksbtn.TabIndex = 9;
+            this.mngmarksbtn.Text = "MANAGE MARKS";
+            this.mngmarksbtn.UseVisualStyleBackColor = true;
+            this.mngmarksbtn.Click += new System.EventHandler(this.mngmarksbtn_Click);
             // 
-            // button9
+            // mngexambtn
             // 
-            this.button9.Location = new System.Drawing.Point(43, 326);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(158, 23);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "MANAGE EXAM";
-            this.button9.UseVisualStyleBackColor = true;
+            this.mngexambtn.Location = new System.Drawing.Point(43, 326);
+            this.mngexambtn.Name = "mngexambtn";
+            this.mngexambtn.Size = new System.Drawing.Size(158, 23);
+            this.mngexambtn.TabIndex = 8;
+            this.mngexambtn.Text = "MANAGE EXAM";
+            this.mngexambtn.UseVisualStyleBackColor = true;
+            this.mngexambtn.Click += new System.EventHandler(this.mngexambtn_Click);
             // 
-            // button7
+            // mngcoursebtn
             // 
-            this.button7.Location = new System.Drawing.Point(43, 285);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(158, 23);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "MANAGE COURSE";
-            this.button7.UseVisualStyleBackColor = true;
+            this.mngcoursebtn.Location = new System.Drawing.Point(43, 285);
+            this.mngcoursebtn.Name = "mngcoursebtn";
+            this.mngcoursebtn.Size = new System.Drawing.Size(158, 23);
+            this.mngcoursebtn.TabIndex = 6;
+            this.mngcoursebtn.Text = "MANAGE COURSE";
+            this.mngcoursebtn.UseVisualStyleBackColor = true;
+            this.mngcoursebtn.Click += new System.EventHandler(this.mngcoursebtn_Click);
             // 
-            // button6
+            // mnglecturerbtn
             // 
-            this.button6.Location = new System.Drawing.Point(43, 243);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(158, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "MANAGE LECTURER";
-            this.button6.UseVisualStyleBackColor = true;
+            this.mnglecturerbtn.Location = new System.Drawing.Point(43, 243);
+            this.mnglecturerbtn.Name = "mnglecturerbtn";
+            this.mnglecturerbtn.Size = new System.Drawing.Size(158, 23);
+            this.mnglecturerbtn.TabIndex = 5;
+            this.mnglecturerbtn.Text = "MANAGE LECTURER";
+            this.mnglecturerbtn.UseVisualStyleBackColor = true;
+            this.mnglecturerbtn.Click += new System.EventHandler(this.mnglecturerbtn_Click);
             // 
-            // button5
+            // mngstaffbtn
             // 
-            this.button5.Location = new System.Drawing.Point(43, 205);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(158, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "MANAGE STAFF";
-            this.button5.UseVisualStyleBackColor = true;
+            this.mngstaffbtn.Location = new System.Drawing.Point(43, 205);
+            this.mngstaffbtn.Name = "mngstaffbtn";
+            this.mngstaffbtn.Size = new System.Drawing.Size(158, 23);
+            this.mngstaffbtn.TabIndex = 4;
+            this.mngstaffbtn.Text = "MANAGE STAFF";
+            this.mngstaffbtn.UseVisualStyleBackColor = true;
+            this.mngstaffbtn.Click += new System.EventHandler(this.mngstaffbtn_Click);
             // 
-            // button4
+            // mngstudentbtn
             // 
-            this.button4.Location = new System.Drawing.Point(43, 165);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(158, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "MANAGE STUDENT";
-            this.button4.UseVisualStyleBackColor = true;
+            this.mngstudentbtn.Location = new System.Drawing.Point(43, 165);
+            this.mngstudentbtn.Name = "mngstudentbtn";
+            this.mngstudentbtn.Size = new System.Drawing.Size(158, 23);
+            this.mngstudentbtn.TabIndex = 3;
+            this.mngstudentbtn.Text = "MANAGE STUDENT";
+            this.mngstudentbtn.UseVisualStyleBackColor = true;
+            this.mngstudentbtn.Click += new System.EventHandler(this.mngstudentbtn_Click);
             // 
-            // button3
+            // mngattendacebtn
             // 
-            this.button3.Location = new System.Drawing.Point(43, 127);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "MANAGE ATTENDANCE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.mngattendacebtn.Location = new System.Drawing.Point(43, 127);
+            this.mngattendacebtn.Name = "mngattendacebtn";
+            this.mngattendacebtn.Size = new System.Drawing.Size(158, 23);
+            this.mngattendacebtn.TabIndex = 2;
+            this.mngattendacebtn.Text = "MANAGE ATTENDANCE";
+            this.mngattendacebtn.UseVisualStyleBackColor = true;
+            this.mngattendacebtn.Click += new System.EventHandler(this.mngattendacebtn_Click);
             // 
-            // button2
+            // mngnoticebtn
             // 
-            this.button2.Location = new System.Drawing.Point(43, 87);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "MANAGE NOTICE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.mngnoticebtn.Location = new System.Drawing.Point(43, 87);
+            this.mngnoticebtn.Name = "mngnoticebtn";
+            this.mngnoticebtn.Size = new System.Drawing.Size(158, 23);
+            this.mngnoticebtn.TabIndex = 1;
+            this.mngnoticebtn.Text = "MANAGE NOTICE";
+            this.mngnoticebtn.UseVisualStyleBackColor = true;
+            this.mngnoticebtn.Click += new System.EventHandler(this.mngnoticebtn_Click);
             // 
-            // button1
+            // noticeboardbtn
             // 
-            this.button1.Location = new System.Drawing.Point(43, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "DASHBOARD VIEW";
-            this.button1.UseVisualStyleBackColor = true;
+            this.noticeboardbtn.Location = new System.Drawing.Point(43, 44);
+            this.noticeboardbtn.Name = "noticeboardbtn";
+            this.noticeboardbtn.Size = new System.Drawing.Size(158, 23);
+            this.noticeboardbtn.TabIndex = 0;
+            this.noticeboardbtn.Text = "DASHBOARD VIEW";
+            this.noticeboardbtn.UseVisualStyleBackColor = true;
+            this.noticeboardbtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -170,17 +181,18 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.logoutbtn);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.mngttbtn);
+            this.panel1.Controls.Add(this.mngmarksbtn);
+            this.panel1.Controls.Add(this.mngexambtn);
+            this.panel1.Controls.Add(this.mngcoursebtn);
+            this.panel1.Controls.Add(this.mnglecturerbtn);
+            this.panel1.Controls.Add(this.mngstaffbtn);
+            this.panel1.Controls.Add(this.mngstudentbtn);
+            this.panel1.Controls.Add(this.mngattendacebtn);
+            this.panel1.Controls.Add(this.mngnoticebtn);
+            this.panel1.Controls.Add(this.noticeboardbtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 100);
             this.panel1.Name = "panel1";
@@ -195,6 +207,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(884, 100);
             this.panel2.TabIndex = 6;
+            // 
+            // logoutbtn
+            // 
+            this.logoutbtn.Location = new System.Drawing.Point(43, 461);
+            this.logoutbtn.Name = "logoutbtn";
+            this.logoutbtn.Size = new System.Drawing.Size(158, 23);
+            this.logoutbtn.TabIndex = 11;
+            this.logoutbtn.Text = "LOGOUT";
+            this.logoutbtn.UseVisualStyleBackColor = true;
+            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
             // AdminForm
             // 
@@ -218,19 +240,20 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button mngttbtn;
+        private System.Windows.Forms.Button mngmarksbtn;
+        private System.Windows.Forms.Button mngexambtn;
+        private System.Windows.Forms.Button mngcoursebtn;
+        private System.Windows.Forms.Button mnglecturerbtn;
+        private System.Windows.Forms.Button mngstaffbtn;
+        private System.Windows.Forms.Button mngstudentbtn;
+        private System.Windows.Forms.Button mngattendacebtn;
+        private System.Windows.Forms.Button mngnoticebtn;
+        private System.Windows.Forms.Button noticeboardbtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button logoutbtn;
     }
 }

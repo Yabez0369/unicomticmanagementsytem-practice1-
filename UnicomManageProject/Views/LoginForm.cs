@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomManageProject.DatabaseManager;
-using UnicomManageProject.Enum;
+using UnicomManageProject.Enums;
 using System.Data.SQLite;
 
 namespace UnicomManageProject.Views
@@ -72,7 +72,7 @@ namespace UnicomManageProject.Views
                                             nextForm = new StudentForm();
                                             break;
                                         case RoleEnum.Staff:
-                                            nextForm = new StaffForm();
+                                            nextForm = new StaffForm(username);
                                             break;
                                         case RoleEnum.Lecturer:
                                             nextForm = new LecturerForm();

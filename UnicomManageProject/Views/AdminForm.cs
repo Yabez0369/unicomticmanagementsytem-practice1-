@@ -21,5 +21,60 @@ namespace UnicomManageProject.Views
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void mngnoticebtn_Click(object sender, EventArgs e)
+        {
+            new NoticeForm().ShowDialog();
+        }
+
+        private void mngattendacebtn_Click(object sender, EventArgs e)
+        {
+            new ManageAttendanceForm().ShowDialog();
+        }
+
+        private void mngstudentbtn_Click(object sender, EventArgs e)
+        {
+            new ManageStudentForm().ShowDialog();
+        }
+
+        private void mngstaffbtn_Click(object sender, EventArgs e)
+        {
+            new ManageStaffForm().ShowDialog();
+        }
+
+        private void mnglecturerbtn_Click(object sender, EventArgs e)
+        {
+            new ManageLecturerForm().ShowDialog();
+        }
+
+        private void mngcoursebtn_Click(object sender, EventArgs e)
+        {
+            new ManageCourseForm().ShowDialog();
+        }
+
+        private void mngexambtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mngmarksbtn_Click(object sender, EventArgs e)
+        {
+            new ManageMarksForm().ShowDialog();
+        }
+
+        private void mngttbtn_Click(object sender, EventArgs e)
+        {
+            new ManageTimetableForm().ShowDialog();
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

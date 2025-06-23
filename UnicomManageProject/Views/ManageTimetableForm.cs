@@ -1,30 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using UnicomManageProject.DatabaseManager;
+using UnicomManageProject.Enums;
 
 namespace UnicomManageProject.Views
 {
     public partial class ManageTimetableForm : Form
     {
+        private int selectedId = -1;
+
         public ManageTimetableForm()
         {
             InitializeComponent();
             this.Load += ManageTimetableForm_Load;
-           // dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellClick += dataGridView1_CellContentClick;
         }
 
         private void ManageTimetableForm_Load(object sender, EventArgs e)
         {
+            // Populate enums in combo boxes
+            subjectcombobox.DataSource = Enum.GetValues(typeof(SubjectEnum));
+            roomcombobox.DataSource = Enum.GetValues(typeof(RoomEnum));
+            timeslotcomboBox.DataSource = Enum.GetValues(typeof(TimeSlot));
+
+            subjectcombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            roomcombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            timeslotcomboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            subjectcombobox.SelectedIndex = -1;
+            roomcombobox.SelectedIndex = -1;
+            timeslotcomboBox.SelectedIndex = -1;
+
             LoadTimetable();
         }
+
         private void LoadTimetable()
         {
             using (var con = DatabaseConfiguration.GetConnection())
@@ -43,23 +55,30 @@ namespace UnicomManageProject.Views
         {
             subjectcombobox.SelectedIndex = -1;
             roomcombobox.SelectedIndex = -1;
-            dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker2.Value = DateTime.Now;
-            //idLabel.Text = string.Empty;
+            timeslotcomboBox.SelectedIndex = -1;
+            selectedId = -1;
         }
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            string timeslot = $"{dateTimePicker1.Value:yyyy-MM-dd HH:mm} - {dateTimePicker2.Value:yyyy-MM-dd HH:mm}";
+            if (subjectcombobox.SelectedItem == null || roomcombobox.SelectedItem == null || timeslotcomboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            var subject = (SubjectEnum)subjectcombobox.SelectedItem;
+            var room = (RoomEnum)roomcombobox.SelectedItem;
+            var timeslot = (TimeSlot)timeslotcomboBox.SelectedItem;
 
             using (var con = DatabaseConfiguration.GetConnection())
             {
                 string query = "INSERT INTO timetable (Subject, Room, Timeslot) VALUES (@subject, @room, @timeslot)";
                 using (var cmd = new SQLiteCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@subject", subjectcombobox.Text);
-                    cmd.Parameters.AddWithValue("@room", roomcombobox.Text);
-                    cmd.Parameters.AddWithValue("@timeslot", timeslot);
+                    cmd.Parameters.AddWithValue("@subject", subject.ToString());
+                    cmd.Parameters.AddWithValue("@room", room.ToString());
+                    cmd.Parameters.AddWithValue("@timeslot", timeslot.ToString());
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Timetable added.");
@@ -71,7 +90,15 @@ namespace UnicomManageProject.Views
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
-            string timeslot = $"{dateTimePicker1.Value:yyyy-MM-dd HH:mm} - {dateTimePicker2.Value:yyyy-MM-dd HH:mm}";
+            if (selectedId == -1)
+            {
+                MessageBox.Show("Please select an entry to update.");
+                return;
+            }
+
+            var subject = (SubjectEnum)subjectcombobox.SelectedItem;
+            var room = (RoomEnum)roomcombobox.SelectedItem;
+            var timeslot = (TimeSlot)timeslotcomboBox.SelectedItem;
 
             using (var con = DatabaseConfiguration.GetConnection())
             {
@@ -80,10 +107,10 @@ namespace UnicomManageProject.Views
                                  WHERE TimetableId = @id";
                 using (var cmd = new SQLiteCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@subject", subjectcombobox.Text);
-                    cmd.Parameters.AddWithValue("@room", roomcombobox.Text);
-                    cmd.Parameters.AddWithValue("@timeslot", timeslot);
-                   
+                    cmd.Parameters.AddWithValue("@subject", subject.ToString());
+                    cmd.Parameters.AddWithValue("@room", room.ToString());
+                    cmd.Parameters.AddWithValue("@timeslot", timeslot.ToString());
+                    cmd.Parameters.AddWithValue("@id", selectedId);
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Timetable updated.");
@@ -95,6 +122,12 @@ namespace UnicomManageProject.Views
 
         private void bdltbtn_Click(object sender, EventArgs e)
         {
+            if (selectedId == -1)
+            {
+                MessageBox.Show("Please select an entry to delete.");
+                return;
+            }
+
             var confirm = MessageBox.Show("Are you sure you want to delete this entry?", "Confirm", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
@@ -103,7 +136,7 @@ namespace UnicomManageProject.Views
                     string query = "DELETE FROM timetable WHERE TimetableId = @id";
                     using (var cmd = new SQLiteCommand(query, con))
                     {
-                        //cmd.Parameters.AddWithValue("@id", idLabel.Text);
+                        cmd.Parameters.AddWithValue("@id", selectedId);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Timetable deleted.");
                         LoadTimetable();
@@ -118,23 +151,21 @@ namespace UnicomManageProject.Views
             if (e.RowIndex >= 0)
             {
                 var row = dataGridView1.Rows[e.RowIndex];
-                //idLabel.Text = row.Cells["TimetableId"].Value.ToString();
-                subjectcombobox.Text = row.Cells["Subject"].Value.ToString();
-                roomcombobox.Text = row.Cells["Room"].Value.ToString();
-
-                // Parse timeslot into start and end
-                string[] times = row.Cells["Timeslot"].Value.ToString().Split('-');
-                if (times.Length == 2)
-                {
-                    dateTimePicker1.Value = DateTime.Parse(times[0].Trim());
-                    dateTimePicker2.Value = DateTime.Parse(times[1].Trim());
-                }
+                selectedId = Convert.ToInt32(row.Cells["TimetableId"].Value);
+                subjectcombobox.SelectedItem = Enum.Parse(typeof(SubjectEnum), row.Cells["Subject"].Value.ToString());
+                roomcombobox.SelectedItem = Enum.Parse(typeof(RoomEnum), row.Cells["Room"].Value.ToString());
+                timeslotcomboBox.SelectedItem = Enum.Parse(typeof(TimeSlot), row.Cells["Timeslot"].Value.ToString());
             }
         }
 
         private void backbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void roomcombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // No logic needed here yet
         }
     }
 }

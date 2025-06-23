@@ -9,17 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
-using UnicomManageProject.Enum;
+using UnicomManageProject.Enums;
 using System.Data.SQLite;
 using UnicomManageProject.DatabaseManager;
+using UnicomManageProject.Controlers;
 
 namespace UnicomManageProject.Views
 {
     public partial class ManageAttendanceForm : Form
     {
+        private readonly AttendanceController _controller = new AttendanceController();
         public ManageAttendanceForm()
         {
             InitializeComponent();
+            this.Load += ManageAttendanceForm_Load;
+            //dgvattendance.CellClick += dgvattendance_CellClick;
         }
 
         private void ManageAttendanceForm_Load(object sender, EventArgs e)

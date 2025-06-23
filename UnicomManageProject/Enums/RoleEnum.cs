@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnicomManageProject.Enum
+namespace UnicomManageProject.Enums
 {
-    public enum AttendanceEnum
+    public enum RoleEnum
     {
-        Present,
-        Absent,
-        Late,
-        Excused
-
+        Admin,
+        Student,
+        Staff,
+        Lecturer
     }
 }

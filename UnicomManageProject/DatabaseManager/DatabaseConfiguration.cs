@@ -9,7 +9,7 @@ namespace UnicomManageProject.DatabaseManager
 {
     internal class DatabaseConfiguration
     {
-        private static string ConnectionString = "Data Source=users.db;Version=3;";
+        private static string ConnectionString = "Data Source=UnciomTicDB.db;Version=3;";
 
         public static SQLiteConnection GetConnection()
         {

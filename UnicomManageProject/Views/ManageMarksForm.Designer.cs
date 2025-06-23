@@ -44,6 +44,10 @@
             this.subjectcombobox = new System.Windows.Forms.ComboBox();
             this.examcombobox = new System.Windows.Forms.ComboBox();
             this.scorecombobox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvmarkslist)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +65,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 294);
+            this.label3.Location = new System.Drawing.Point(67, 375);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 137;
@@ -79,7 +83,7 @@
             // 
             // backbtn
             // 
-            this.backbtn.Location = new System.Drawing.Point(217, 452);
+            this.backbtn.Location = new System.Drawing.Point(217, 512);
             this.backbtn.Name = "backbtn";
             this.backbtn.Size = new System.Drawing.Size(75, 23);
             this.backbtn.TabIndex = 132;
@@ -88,7 +92,7 @@
             // 
             // clearbtn
             // 
-            this.clearbtn.Location = new System.Drawing.Point(118, 452);
+            this.clearbtn.Location = new System.Drawing.Point(118, 512);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(75, 23);
             this.clearbtn.TabIndex = 131;
@@ -98,7 +102,7 @@
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(271, 389);
+            this.updatebtn.Location = new System.Drawing.Point(271, 449);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(75, 23);
             this.updatebtn.TabIndex = 130;
@@ -108,7 +112,7 @@
             // 
             // dltbtn
             // 
-            this.dltbtn.Location = new System.Drawing.Point(171, 389);
+            this.dltbtn.Location = new System.Drawing.Point(171, 449);
             this.dltbtn.Name = "dltbtn";
             this.dltbtn.Size = new System.Drawing.Size(75, 23);
             this.dltbtn.TabIndex = 129;
@@ -118,7 +122,7 @@
             // 
             // Addbtn
             // 
-            this.Addbtn.Location = new System.Drawing.Point(70, 389);
+            this.Addbtn.Location = new System.Drawing.Point(70, 449);
             this.Addbtn.Name = "Addbtn";
             this.Addbtn.Size = new System.Drawing.Size(75, 23);
             this.Addbtn.TabIndex = 128;
@@ -148,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(67, 247);
+            this.label2.Location = new System.Drawing.Point(67, 328);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 125;
@@ -167,7 +171,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(67, 193);
+            this.label6.Location = new System.Drawing.Point(67, 274);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 138;
@@ -176,7 +180,7 @@
             // subjectcombobox
             // 
             this.subjectcombobox.FormattingEnabled = true;
-            this.subjectcombobox.Location = new System.Drawing.Point(171, 190);
+            this.subjectcombobox.Location = new System.Drawing.Point(171, 271);
             this.subjectcombobox.Name = "subjectcombobox";
             this.subjectcombobox.Size = new System.Drawing.Size(175, 21);
             this.subjectcombobox.TabIndex = 140;
@@ -184,7 +188,7 @@
             // examcombobox
             // 
             this.examcombobox.FormattingEnabled = true;
-            this.examcombobox.Location = new System.Drawing.Point(171, 239);
+            this.examcombobox.Location = new System.Drawing.Point(171, 320);
             this.examcombobox.Name = "examcombobox";
             this.examcombobox.Size = new System.Drawing.Size(175, 21);
             this.examcombobox.TabIndex = 141;
@@ -192,16 +196,52 @@
             // scorecombobox
             // 
             this.scorecombobox.FormattingEnabled = true;
-            this.scorecombobox.Location = new System.Drawing.Point(171, 286);
+            this.scorecombobox.Location = new System.Drawing.Point(171, 367);
             this.scorecombobox.Name = "scorecombobox";
             this.scorecombobox.Size = new System.Drawing.Size(175, 21);
             this.scorecombobox.TabIndex = 142;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.TabIndex = 143;
+            this.label1.Text = "Student Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(171, 225);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(175, 20);
+            this.textBox1.TabIndex = 144;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(70, 185);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 145;
+            this.label8.Text = "Student Id";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(171, 178);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(175, 20);
+            this.textBox2.TabIndex = 146;
             // 
             // ManageMarksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 661);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.scorecombobox);
             this.Controls.Add(this.examcombobox);
             this.Controls.Add(this.subjectcombobox);
@@ -246,5 +286,9 @@
         private System.Windows.Forms.ComboBox subjectcombobox;
         private System.Windows.Forms.ComboBox examcombobox;
         private System.Windows.Forms.ComboBox scorecombobox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

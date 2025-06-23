@@ -1,7 +1,9 @@
 ﻿namespace UnicomManageProject.Views
 {
-    partial class ManageTimetableForm
+    public partial class ManageTimetableForm
     {
+
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -46,6 +48,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.roomcombobox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.timeslotcomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -121,9 +125,9 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(219, 358);
+            this.dateTimePicker2.Location = new System.Drawing.Point(41, 81);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(163, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(10, 20);
             this.dateTimePicker2.TabIndex = 32;
             // 
             // dateTimePicker1
@@ -136,11 +140,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(69, 364);
+            this.label6.Location = new System.Drawing.Point(12, 87);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 30;
             this.label6.Text = "End Time";
+            this.label6.Visible = false;
             // 
             // subjectcombobox
             // 
@@ -165,9 +170,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(69, 309);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 26;
-            this.label3.Text = "Start Time";
+            this.label3.Text = "Date";
             // 
             // label2
             // 
@@ -204,21 +209,43 @@
             this.roomcombobox.Name = "roomcombobox";
             this.roomcombobox.Size = new System.Drawing.Size(163, 21);
             this.roomcombobox.TabIndex = 29;
+            this.roomcombobox.SelectedIndexChanged += new System.EventHandler(this.roomcombobox_SelectedIndexChanged);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(884, 100);
             this.panel2.TabIndex = 23;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(69, 357);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "TimeSlot";
+            // 
+            // timeslotcomboBox
+            // 
+            this.timeslotcomboBox.FormattingEnabled = true;
+            this.timeslotcomboBox.Location = new System.Drawing.Point(219, 349);
+            this.timeslotcomboBox.Name = "timeslotcomboBox";
+            this.timeslotcomboBox.Size = new System.Drawing.Size(163, 21);
+            this.timeslotcomboBox.TabIndex = 41;
+            // 
             // ManageTimetableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 661);
+            this.Controls.Add(this.timeslotcomboBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.backbtn);
             this.Controls.Add(this.clearbtn);
@@ -226,9 +253,7 @@
             this.Controls.Add(this.bdltbtn);
             this.Controls.Add(this.addbtn);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.subjectcombobox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -267,5 +292,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox roomcombobox;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox timeslotcomboBox;
     }
 }

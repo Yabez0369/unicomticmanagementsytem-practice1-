@@ -233,7 +233,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Name = "ManageStaffForm";
-            this.Text = "ManageStaffForm";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.ManageStaffForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvstafflist)).EndInit();
             this.panel2.ResumeLayout(false);

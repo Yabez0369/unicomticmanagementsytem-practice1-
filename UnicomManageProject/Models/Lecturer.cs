@@ -9,11 +9,11 @@ namespace UnicomManageProject.Models
     internal class Lecturer
     {
         public int Id { get; set; }
-
-        public string UserName { get; set; }
-
-        public string Password { get; set; }
-        
+        public string LecturerName { get; set; }
+        public string Password { get; set; }         
         public string Address { get; set; }
+        public string Phone { get; set; }          
+        public string Course { get; set; }
+        public string Subject { get; set; }
     }
 }

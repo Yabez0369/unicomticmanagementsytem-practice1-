@@ -14,11 +14,12 @@ namespace UnicomManageProject.Views
 {
     public partial class ManageStaffForm : Form
     {
+        private int selectedId = -1;
         public ManageStaffForm()
         {
             InitializeComponent();
             this.Load += ManageStaffForm_Load;
-           // dgvstafflist.CellClick += dgvstafflist_CellClick;
+           //dgvstafflist.CellClick += dgvstafflist_CellContentClick;
         }
 
         private void ManageStaffForm_Load(object sender, EventArgs e)

@@ -30,21 +30,21 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvmarks = new System.Windows.Forms.DataGridView();
+            this.dgvtt = new System.Windows.Forms.DataGridView();
+            this.dgvprofile = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.editmarksbtn = new System.Windows.Forms.Button();
+            this.edittimetablebtn = new System.Windows.Forms.Button();
+            this.exitbtn = new System.Windows.Forms.Button();
+            this.noticebtn = new System.Windows.Forms.Button();
+            this.viewmarksbtn = new System.Windows.Forms.Button();
+            this.viewttbtn = new System.Windows.Forms.Button();
             this.viewprofilebtn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvmarks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvprofile)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,38 +67,38 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "UNICOM TIC MANAGEMENT SYSTEM";
             // 
-            // dataGridView3
+            // dgvmarks
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(287, 423);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(568, 150);
-            this.dataGridView3.TabIndex = 77;
+            this.dgvmarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvmarks.Location = new System.Drawing.Point(287, 423);
+            this.dgvmarks.Name = "dgvmarks";
+            this.dgvmarks.Size = new System.Drawing.Size(568, 150);
+            this.dgvmarks.TabIndex = 77;
             // 
-            // dataGridView2
+            // dgvtt
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(287, 251);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(568, 150);
-            this.dataGridView2.TabIndex = 76;
+            this.dgvtt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvtt.Location = new System.Drawing.Point(287, 251);
+            this.dgvtt.Name = "dgvtt";
+            this.dgvtt.Size = new System.Drawing.Size(568, 150);
+            this.dgvtt.TabIndex = 76;
             // 
-            // dataGridView1
+            // dgvprofile
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(287, 156);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(576, 74);
-            this.dataGridView1.TabIndex = 75;
+            this.dgvprofile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvprofile.Location = new System.Drawing.Point(287, 156);
+            this.dgvprofile.Name = "dgvprofile";
+            this.dgvprofile.Size = new System.Drawing.Size(576, 74);
+            this.dgvprofile.TabIndex = 75;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.editmarksbtn);
+            this.panel1.Controls.Add(this.edittimetablebtn);
+            this.panel1.Controls.Add(this.exitbtn);
+            this.panel1.Controls.Add(this.noticebtn);
+            this.panel1.Controls.Add(this.viewmarksbtn);
+            this.panel1.Controls.Add(this.viewttbtn);
             this.panel1.Controls.Add(this.viewprofilebtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 100);
@@ -106,59 +106,65 @@
             this.panel1.Size = new System.Drawing.Size(227, 561);
             this.panel1.TabIndex = 74;
             // 
-            // button7
+            // editmarksbtn
             // 
-            this.button7.Location = new System.Drawing.Point(12, 365);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(196, 23);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "MANAGE MARKS";
-            this.button7.UseVisualStyleBackColor = true;
+            this.editmarksbtn.Location = new System.Drawing.Point(12, 365);
+            this.editmarksbtn.Name = "editmarksbtn";
+            this.editmarksbtn.Size = new System.Drawing.Size(196, 23);
+            this.editmarksbtn.TabIndex = 6;
+            this.editmarksbtn.Text = "MANAGE MARKS";
+            this.editmarksbtn.UseVisualStyleBackColor = true;
+            this.editmarksbtn.Click += new System.EventHandler(this.editmarksbtn_Click);
             // 
-            // button6
+            // edittimetablebtn
             // 
-            this.button6.Location = new System.Drawing.Point(3, 197);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(196, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "MANAGE TIMETABLE";
-            this.button6.UseVisualStyleBackColor = true;
+            this.edittimetablebtn.Location = new System.Drawing.Point(12, 191);
+            this.edittimetablebtn.Name = "edittimetablebtn";
+            this.edittimetablebtn.Size = new System.Drawing.Size(196, 23);
+            this.edittimetablebtn.TabIndex = 5;
+            this.edittimetablebtn.Text = "MANAGE TIMETABLE";
+            this.edittimetablebtn.UseVisualStyleBackColor = true;
+            this.edittimetablebtn.Click += new System.EventHandler(this.edittimetablebtn_Click);
             // 
-            // button5
+            // exitbtn
             // 
-            this.button5.Location = new System.Drawing.Point(12, 490);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(196, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "BACK";
-            this.button5.UseVisualStyleBackColor = true;
+            this.exitbtn.Location = new System.Drawing.Point(12, 490);
+            this.exitbtn.Name = "exitbtn";
+            this.exitbtn.Size = new System.Drawing.Size(196, 23);
+            this.exitbtn.TabIndex = 4;
+            this.exitbtn.Text = "EXIT";
+            this.exitbtn.UseVisualStyleBackColor = true;
+            this.exitbtn.Click += new System.EventHandler(this.exitbtn_Click);
             // 
-            // button4
+            // noticebtn
             // 
-            this.button4.Location = new System.Drawing.Point(12, 450);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(196, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "VIEW DASHBOARD";
-            this.button4.UseVisualStyleBackColor = true;
+            this.noticebtn.Location = new System.Drawing.Point(12, 450);
+            this.noticebtn.Name = "noticebtn";
+            this.noticebtn.Size = new System.Drawing.Size(196, 23);
+            this.noticebtn.TabIndex = 3;
+            this.noticebtn.Text = "VIEW NOTICE";
+            this.noticebtn.UseVisualStyleBackColor = true;
+            this.noticebtn.Click += new System.EventHandler(this.noticebtn_Click);
             // 
-            // button3
+            // viewmarksbtn
             // 
-            this.button3.Location = new System.Drawing.Point(12, 323);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(196, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "VIEW MARKS";
-            this.button3.UseVisualStyleBackColor = true;
+            this.viewmarksbtn.Location = new System.Drawing.Point(12, 323);
+            this.viewmarksbtn.Name = "viewmarksbtn";
+            this.viewmarksbtn.Size = new System.Drawing.Size(196, 23);
+            this.viewmarksbtn.TabIndex = 2;
+            this.viewmarksbtn.Text = "VIEW MARKS";
+            this.viewmarksbtn.UseVisualStyleBackColor = true;
+            this.viewmarksbtn.Click += new System.EventHandler(this.viewmarksbtn_Click);
             // 
-            // button2
+            // viewttbtn
             // 
-            this.button2.Location = new System.Drawing.Point(12, 151);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "VIEW TIMETABLE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.viewttbtn.Location = new System.Drawing.Point(12, 151);
+            this.viewttbtn.Name = "viewttbtn";
+            this.viewttbtn.Size = new System.Drawing.Size(196, 23);
+            this.viewttbtn.TabIndex = 1;
+            this.viewttbtn.Text = "VIEW TIMETABLE";
+            this.viewttbtn.UseVisualStyleBackColor = true;
+            this.viewttbtn.Click += new System.EventHandler(this.viewttbtn_Click);
             // 
             // viewprofilebtn
             // 
@@ -168,15 +174,16 @@
             this.viewprofilebtn.TabIndex = 0;
             this.viewprofilebtn.Text = "VIEW PROFILE";
             this.viewprofilebtn.UseVisualStyleBackColor = true;
+            this.viewprofilebtn.Click += new System.EventHandler(this.viewprofilebtn_Click);
             // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 661);
-            this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvmarks);
+            this.Controls.Add(this.dgvtt);
+            this.Controls.Add(this.dgvprofile);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "StaffForm";
@@ -184,9 +191,9 @@
             this.Load += new System.EventHandler(this.StaffForm_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvmarks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvprofile)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -196,16 +203,16 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvmarks;
+        private System.Windows.Forms.DataGridView dgvtt;
+        private System.Windows.Forms.DataGridView dgvprofile;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button editmarksbtn;
+        private System.Windows.Forms.Button edittimetablebtn;
+        private System.Windows.Forms.Button exitbtn;
+        private System.Windows.Forms.Button noticebtn;
+        private System.Windows.Forms.Button viewmarksbtn;
+        private System.Windows.Forms.Button viewttbtn;
         private System.Windows.Forms.Button viewprofilebtn;
     }
 }

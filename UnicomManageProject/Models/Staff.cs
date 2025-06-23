@@ -17,6 +17,8 @@ namespace UnicomManageProject.Models
 
         public string Address { get; set; }
 
+        public string Position { get; set; }
+
     }
 }
 

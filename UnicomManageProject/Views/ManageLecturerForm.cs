@@ -1,148 +1,226 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 using UnicomManageProject.DatabaseManager;
+using UnicomManageProject.Enums;
 
 namespace UnicomManageProject.Views
 {
     public partial class ManageLecturerForm : Form
     {
+        private int selectedId = -1;
         public ManageLecturerForm()
         {
             InitializeComponent();
             this.Load += ManageLecturerForm_Load;
-            //dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellClick += LecturerGridView_CellClick;
+
+
         }
 
         private void ManageLecturerForm_Load(object sender, EventArgs e)
         {
+           
+            comboBox2.DataSource = Enum.GetValues(typeof(SubjectEnum));
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.SelectedIndex = -1;
+            LoadCourses();
             LoadLecturers();
         }
 
+        private void LoadCourses()
+        {
+            try
+            {
+                using (var con = DatabaseConfiguration.GetConnection())
+                {
+                    string query = "SELECT Name FROM course";
+                    using (var cmd = new SQLiteCommand(query, con))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var courseList = new List<string>();
+                        while (reader.Read())
+                        {
+                            courseList.Add(reader.GetString(0));
+                        }
+                        comboBox1.DataSource = courseList;
+                        comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+                        comboBox1.SelectedIndex = -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading courses:\n" + ex.Message);
+            }
+        }
         private void LoadLecturers()
         {
-            using (var con = DatabaseConfiguration.GetConnection())
+            try
             {
-                string query = "SELECT Id, LecturerName, Address, Phone, Email, Course, Subject FROM lecturers";
-                using (var da = new SQLiteDataAdapter(query, con))
+                using (var con = DatabaseConfiguration.GetConnection())
                 {
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
+                    string query = "SELECT Id, LecturerName, Address, Phone, Course, Subject FROM lecturers";
+                    using (var da = new SQLiteDataAdapter(query, con))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        dataGridView1.DataSource = dt;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading lecturers:\n" + ex.Message);
             }
         }
 
         private void ClearBtn_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox2.Clear();
+            textBox1.Clear(); 
+            textBox2.Clear(); 
             textBox3.Clear();
             comboBox1.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
-            //idLabel.Text = string.Empty;
+            selectedId = -1;               
+           
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            //if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(emailTextBox.Text))
-            //{
-            //    MessageBox.Show("Please fill in all required fields.");
-            //    return;
-            //}
-
-            using (var con = DatabaseConfiguration.GetConnection())
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                string query = @"INSERT INTO lecturers 
-                                 (LecturerName, Address, Phone, Email, Course, Subject) 
-                                 VALUES (@name, @address, @phone, @email, @course, @subject)";
-                using (var cmd = new SQLiteCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@name", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@address", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@phone", textBox3.Text);
-                    //cmd.Parameters.AddWithValue("@email", emailTextBox.Text);
-                    cmd.Parameters.AddWithValue("@course", comboBox1.Text);
-                    cmd.Parameters.AddWithValue("@subject", comboBox2.Text);
-
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Lecturer added.");
-                    LoadLecturers();
-                    ClearBtn_Click(null, null);
-                }
+                MessageBox.Show("Please fill in all required fields.");
+                return;
             }
-        }
 
-        private void UpdateBtn_Click(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrWhiteSpace(idLabel.Text))
-            //{
-            //    MessageBox.Show("Please select a lecturer to update.");
-            //    return;
-            //}
-
-            using (var con = DatabaseConfiguration.GetConnection())
+            try
             {
-                string query = @"UPDATE lecturers 
-                                 SET LecturerName = @name, Address = @address, Phone = @phone, 
-                                     Email = @email, Course = @course, Subject = @subject 
-                                 WHERE Id = @id";
-                using (var cmd = new SQLiteCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@name", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@address", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@phone", textBox3.Text);               
-                    cmd.Parameters.AddWithValue("@course", comboBox1.Text);
-                    cmd.Parameters.AddWithValue("@subject", comboBox2.Text);
-                    //cmd.Parameters.AddWithValue("@id", idLabel.Text);
+                var subject = (SubjectEnum)comboBox2.SelectedItem;
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Lecturer updated.");
-                    LoadLecturers();
-                    ClearBtn_Click(null, null);
-                }
-            }
-        }
-
-        private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrWhiteSpace(idLabel.Text))
-            //{
-            //    MessageBox.Show("Please select a lecturer to delete.");
-            //    return;
-            //}
-
-            var confirm = MessageBox.Show("Are you sure you want to delete this lecturer?", "Confirm", MessageBoxButtons.YesNo);
-            if (confirm == DialogResult.Yes)
-            {
                 using (var con = DatabaseConfiguration.GetConnection())
                 {
-                    string query = "DELETE FROM lecturers WHERE Id = @id";
+                    string query = @"INSERT INTO lecturers 
+                             (LecturerName, Address, Phone, Course, Subject) 
+                             VALUES (@name, @address, @phone, @course, @subject)";
                     using (var cmd = new SQLiteCommand(query, con))
                     {
-                        //cmd.Parameters.AddWithValue("@id", );
+                        cmd.Parameters.AddWithValue("@name", textBox1.Text);
+                        cmd.Parameters.AddWithValue("@address", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@phone", textBox3.Text);
+                        cmd.Parameters.AddWithValue("@course", comboBox1.Text);
+                        cmd.Parameters.AddWithValue("@subject", subject.ToString());
+
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Lecturer deleted.");
+                        MessageBox.Show("Lecturer added.");
                         LoadLecturers();
                         ClearBtn_Click(null, null);
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding lecturer:\n" + ex.Message);
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (selectedId == -1)
+            {
+                MessageBox.Show("Please select a lecturer to update.");
+                return;
+            }
+
+            if (comboBox1.SelectedIndex == -1 || comboBox2.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select both a course and a subject.");
+                return;
+            }
+
+            try
+            {
+                var subject = (SubjectEnum)comboBox2.SelectedItem;
+
+                using (var con = DatabaseConfiguration.GetConnection())
+                {
+                    string query = @"UPDATE lecturers 
+                             SET LecturerName = @name, Address = @address, Phone = @phone, 
+                                 Course = @course, Subject = @subject 
+                             WHERE Id = @id";
+                    using (var cmd = new SQLiteCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@name", textBox1.Text);
+                        cmd.Parameters.AddWithValue("@address", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@phone", textBox3.Text);
+                        cmd.Parameters.AddWithValue("@course", comboBox1.Text);
+                        cmd.Parameters.AddWithValue("@subject", subject.ToString());
+                        cmd.Parameters.AddWithValue("@id", selectedId);
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Lecturer updated.");
+                        LoadLecturers();
+                        ClearBtn_Click(null, null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating lecturer:\n" + ex.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (selectedId == -1)
+            {
+                MessageBox.Show("Please select an entry to delete.");
+                return;
+            }
+
+            var confirm = MessageBox.Show("Are you sure you want to delete this lecturer?", "Confirm", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+                try
+                {
+                    using (var con = DatabaseConfiguration.GetConnection())
+                    {
+                        string query = "DELETE FROM lecturers WHERE Id = @id";
+                        using (var cmd = new SQLiteCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@id", selectedId);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Lecturer deleted.");
+                            LoadLecturers();
+                            ClearBtn_Click(null, null);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting lecturer:\n" + ex.Message);
+                }
         }
 
         private void LecturerGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+
+            if (e.RowIndex < 0) return;
+
+            try
             {
                 var row = dataGridView1.Rows[e.RowIndex];
-                //idLabel.Text = row.Cells["Id"].Value.ToString();
+                selectedId = Convert.ToInt32(row.Cells["Id"].Value);
                 textBox1.Text = row.Cells["LecturerName"].Value.ToString();
                 textBox2.Text = row.Cells["Address"].Value.ToString();
                 textBox3.Text = row.Cells["Phone"].Value.ToString();
-                //emailTextBox.Text = row.Cells["Email"].Value.ToString();
                 comboBox1.Text = row.Cells["Course"].Value.ToString();
-                comboBox2.Text = row.Cells["Subject"].Value.ToString();
+                comboBox2.SelectedItem = Enum.Parse(typeof(SubjectEnum), row.Cells["Subject"].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading selected lecturer:\n" + ex.Message);
             }
         }
 
