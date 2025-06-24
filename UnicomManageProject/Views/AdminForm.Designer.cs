@@ -42,8 +42,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.logoutbtn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -178,6 +178,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(667, 561);
             this.panel3.TabIndex = 8;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // panel1
             // 
@@ -199,15 +200,6 @@
             this.panel1.Size = new System.Drawing.Size(217, 561);
             this.panel1.TabIndex = 7;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(884, 100);
-            this.panel2.TabIndex = 6;
-            // 
             // logoutbtn
             // 
             this.logoutbtn.Location = new System.Drawing.Point(43, 461);
@@ -217,6 +209,15 @@
             this.logoutbtn.Text = "LOGOUT";
             this.logoutbtn.UseVisualStyleBackColor = true;
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(884, 100);
+            this.panel2.TabIndex = 6;
             // 
             // AdminForm
             // 
