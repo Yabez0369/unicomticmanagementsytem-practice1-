@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FileAlignment>4096</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,6 +61,7 @@
     <Compile Include="Controlers\AttendanceController.cs" />
     <Compile Include="Controlers\CourseController.cs" />
     <Compile Include="Controlers\LecturerContoller.cs" />
+    <Compile Include="Controlers\LoginStudentController.cs" />
     <Compile Include="Controlers\MarksController.cs" />
     <Compile Include="Controlers\StaffController.cs" />
     <Compile Include="Controlers\StudentController.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Enums\AttendanceEnum.cs" />
     <Compile Include="Enums\ExamTypeEnum.cs" />
     <Compile Include="Enums\MarkEnum.cs" />
+    <Compile Include="Enums\PositionEnum.cs" />
     <Compile Include="Enums\RoleEnum.cs" />
     <Compile Include="Enums\RoomEnum.cs" />
     <Compile Include="Enums\SubjectEnum.cs" />

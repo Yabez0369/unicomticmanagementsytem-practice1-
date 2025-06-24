@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnicomManageProject.DatabaseManager;
+using static UnicomManageProject.Controlers.AdminController;
 
 namespace UnicomManageProject.Controlers
 {
@@ -28,18 +29,33 @@ namespace UnicomManageProject.Controlers
         public bool AddLecturer(string name, string address, string phone, string course, string subject)
         {
             using (var con = DatabaseConfiguration.GetConnection())
+            using (var tran = con.BeginTransaction())
             {
-                string query = @"INSERT INTO lecturers 
-                                 (LecturerName, Address, Phone, Course, Subject) 
-                                 VALUES (@name, @address, @phone, @course, @subject)";
-                using (var cmd = new SQLiteCommand(query, con))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@address", address);
-                    cmd.Parameters.AddWithValue("@phone", phone);
-                    cmd.Parameters.AddWithValue("@course", course);
-                    cmd.Parameters.AddWithValue("@subject", subject);
-                    return cmd.ExecuteNonQuery() > 0;
+                    string insertQuery = @"INSERT INTO lecturers 
+                                   (LecturerName, Address, Phone, Course, Subject) 
+                                   VALUES (@name, @address, @phone, @course, @subject)";
+                    using (var cmd = new SQLiteCommand(insertQuery, con, tran))
+                    {
+                        cmd.Parameters.AddWithValue("@name", name);
+                        cmd.Parameters.AddWithValue("@address", address);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.Parameters.AddWithValue("@course", course);
+                        cmd.Parameters.AddWithValue("@subject", subject);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create user login
+                    UserManager.CreateUser(con, tran, name, "Lecturer123", "Lecturer");
+
+                    tran.Commit();
+                    return true;
+                }
+                catch
+                {
+                    tran.Rollback();
+                    return false;
                 }
             }
         }

@@ -59,7 +59,7 @@ namespace UnicomManageProject.Views
 
         private void mngexambtn_Click(object sender, EventArgs e)
         {
-
+            //new ManageExamForm().ShowDialog();
         }
 
         private void mngmarksbtn_Click(object sender, EventArgs e)

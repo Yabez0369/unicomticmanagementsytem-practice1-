@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnicomManageProject.DatabaseManager;
+using static UnicomManageProject.Controlers.AdminController;
+using System.Xml.Linq;
 
 namespace UnicomManageProject.Controlers
 {
@@ -28,19 +30,35 @@ namespace UnicomManageProject.Controlers
         public bool AddStudent(string username, string address, string phone, string email, string course)
         {
             using (var con = DatabaseConfiguration.GetConnection())
+            using (var tran = con.BeginTransaction())
             {
-                string query = @"INSERT INTO students 
-                                 (UserName, Password, Address, PhoneNumber, Email, CourseName) 
-                                 VALUES (@username, @password, @address, @phone, @email, @course)";
-                using (var cmd = new SQLiteCommand(query, con))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", "Default123"); // default password
-                    cmd.Parameters.AddWithValue("@address", address);
-                    cmd.Parameters.AddWithValue("@phone", phone);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@course", course);
-                    return cmd.ExecuteNonQuery() > 0;
+                    // Insert into students table
+                    string studentInsert = @"INSERT INTO students 
+                                     (Name, Address, PhoneNumber, Email, CourseName) 
+                                     VALUES (@name, @address, @phone, @email, @course)";
+                    using (var cmd = new SQLiteCommand(studentInsert, con, tran))
+                    {
+                        cmd.Parameters.AddWithValue("@name", username);
+                        cmd.Parameters.AddWithValue("@address", address);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@course", course);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Insert into users table
+                    string defaultPassword = "Student123";
+                    UserManager.CreateUser(con, tran, username, defaultPassword, "Student");
+
+                    tran.Commit();
+                    return true;
+                }
+                catch
+                {
+                    tran.Rollback();
+                    return false;
                 }
             }
         }

@@ -1,8 +1,3 @@
-Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\UnicomManageProject.exe.config
-Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\UnicomManageProject.exe
-Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\UnicomManageProject.pdb
-Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\System.Data.SQLite.dll
-Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\System.Data.SQLite.xml
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.csproj.AssemblyReference.cache
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.Form1.resources
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.Properties.Resources.resources
@@ -23,6 +18,9 @@ Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManagePro
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.Views.StudentForm.resources
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.csproj.GenerateResource.cache
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.csproj.CoreCompileInputs.cache
+Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\UnicomManageProject.exe.config
+Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\UnicomManageProject.exe
+Z:\new Project\UnicomManageProject\UnicomManageProject\bin\Debug\UnicomManageProject.pdb
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomMa.1CCC4A70.Up2Date
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.exe
 Z:\new Project\UnicomManageProject\UnicomManageProject\obj\Debug\UnicomManageProject.pdb

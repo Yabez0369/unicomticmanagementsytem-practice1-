@@ -14,17 +14,25 @@ namespace UnicomManageProject.Views
 {
     public partial class PasswordSetupForm : Form
     {
-        public PasswordSetupForm(string username, string role, string systemPassword)
-        {     
-            InitializeComponent();
-            Name = username;
-            Username.Text = role;
-            GivenPassword.Text = systemPassword;
+        private readonly string _username;
+        private readonly string _role;
+        private readonly string _systemPassword;
 
-            Username.Text = Name;
+        public bool IsPasswordSet { get; private set; } = false;
+
+
+        public PasswordSetupForm(string username, string role, string systemPassword)
+        {
+            InitializeComponent();
+
+            _username = username;
+            _role = role;
+            _systemPassword = systemPassword;
+
+            Username.Text = _username;
             Username.ReadOnly = true;
 
-            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            this.ClearBtn.Click += new EventHandler(this.ClearBtn_Click);
 
         }
 
@@ -39,7 +47,7 @@ namespace UnicomManageProject.Views
             string newPass = NewPassword.Text;
             string confirmPass = ConfirmPassword.Text;
 
-            if (enteredGiven != GivenPassword.Text)
+            if (enteredGiven != _systemPassword)
             {
                 MessageBox.Show("Incorrect system-generated password.");
                 return;
@@ -47,7 +55,7 @@ namespace UnicomManageProject.Views
 
             if (string.IsNullOrWhiteSpace(newPass) || newPass.Length < 4)
             {
-                MessageBox.Show("New password must be at least 4 characters.");
+                MessageBox.Show("New password must be at least 6 characters.");
                 return;
             }
 
@@ -66,14 +74,14 @@ namespace UnicomManageProject.Views
                 using (var cmd = new SQLiteCommand(updateQuery, con))
                 {
                     cmd.Parameters.AddWithValue("@newPass", newPass);
-                    cmd.Parameters.AddWithValue("@username", Username);
-                    cmd.Parameters.AddWithValue("@role", Username.Text
-                        );
+                    cmd.Parameters.AddWithValue("@username", _username);
+                    cmd.Parameters.AddWithValue("@role", _role);
 
                     int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        MessageBox.Show("Password set successfully! You can now log in.");
+                        MessageBox.Show("Password set successfully! You can now access your dashboard.");
+                        IsPasswordSet = true;
                         this.Close();
                     }
                     else

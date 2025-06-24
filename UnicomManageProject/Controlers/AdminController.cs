@@ -11,6 +11,21 @@ namespace UnicomManageProject.Controlers
 {
     internal class AdminController
     {
+        public static class UserManager
+        {
+            public static bool CreateUser(SQLiteConnection con, SQLiteTransaction tran, string username, string password, string role)
+            {
+                string insertQuery = @"INSERT INTO users (Username, Password, Role, IsActive)
+                               VALUES (@username, @password, @role, 1)";
+                using (var cmd = new SQLiteCommand(insertQuery, con, tran))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@role", role);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
         public DataTable GetAllAdmins()
         {
             using (var con = DatabaseConfiguration.GetConnection())

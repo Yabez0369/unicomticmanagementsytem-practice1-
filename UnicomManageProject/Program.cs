@@ -21,7 +21,7 @@ namespace UnicomManageProject
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ManageLecturerForm());
+            Application.Run(new LoginForm());
         }
     }
 }

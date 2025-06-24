@@ -15,11 +15,11 @@ namespace UnicomManageProject.Views
 {
     public partial class LecturerForm : Form
     {
-        private readonly string _username;
-        public LecturerForm()
+        private readonly string _username;   
+        public LecturerForm(string username)
         { 
             InitializeComponent();
-            //_username = username;
+            _username = username;
         }
 
         private void LecturerForm_Load(object sender, EventArgs e)

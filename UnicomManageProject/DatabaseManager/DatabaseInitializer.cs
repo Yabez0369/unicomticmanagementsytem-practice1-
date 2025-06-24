@@ -100,6 +100,16 @@ namespace UnicomManageProject.DatabaseManager
                         Phone TEXT NOT NULL,
                         Course TEXT NOT NULL,
                         Subject TEXT NOT NULL
+                    );",
+
+                    //attendance
+                    @"CREATE TABLE IF NOT EXISTS attendance (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        UserName TEXT NOT NULL UNIQUE,
+                        Password TEXT NOT NULL,
+                        Address TEXT NOT NULL,
+                        PhoneNumber TEXT NOT NULL,
+                        Position TEXT NOT NULL
                     );"
 
 
@@ -108,7 +118,7 @@ namespace UnicomManageProject.DatabaseManager
                 foreach (var command in tableCommands)
                 {
                     using (var cmd = new SQLiteCommand(command, con))
-                    {
+                   {
                         cmd.ExecuteNonQuery();
                     }
                 }

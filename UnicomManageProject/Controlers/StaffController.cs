@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnicomManageProject.DatabaseManager;
+using static UnicomManageProject.Controlers.AdminController;
 
 namespace UnicomManageProject.Controlers
 {
@@ -56,16 +57,32 @@ namespace UnicomManageProject.Controlers
         public bool AddStaff(string name, string address, string phone, string position)
         {
             using (var con = DatabaseConfiguration.GetConnection())
+            using (var tran = con.BeginTransaction())
             {
-                string query = @"INSERT INTO staff (StaffName, Address, Phone, Position) 
-                                 VALUES (@name, @address, @phone, @position)";
-                using (var cmd = new SQLiteCommand(query, con))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@address", address);
-                    cmd.Parameters.AddWithValue("@phone", phone);
-                    cmd.Parameters.AddWithValue("@position", position);
-                    return cmd.ExecuteNonQuery() > 0;
+                    string insertQuery = @"INSERT INTO staff 
+                                   (StaffName, Address, Phone, Position) 
+                                   VALUES (@name, @address, @phone, @position)";
+                    using (var cmd = new SQLiteCommand(insertQuery, con, tran))
+                    {
+                        cmd.Parameters.AddWithValue("@name", name);
+                        cmd.Parameters.AddWithValue("@address", address);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.Parameters.AddWithValue("@position", position);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create user login
+                    UserManager.CreateUser(con, tran, name, "Staff123", "Staff");
+
+                    tran.Commit();
+                    return true;
+                }
+                catch
+                {
+                    tran.Rollback();
+                    return false;
                 }
             }
         }

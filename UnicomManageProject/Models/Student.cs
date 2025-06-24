@@ -15,5 +15,7 @@ namespace UnicomManageProject.Models
         public string Password { get; set; }
 
         public string Address { get; set; }
+
+       
     }
 }

@@ -107,6 +107,7 @@
             this.backbtn.TabIndex = 56;
             this.backbtn.Text = "BACK";
             this.backbtn.UseVisualStyleBackColor = true;
+            this.backbtn.Click += new System.EventHandler(this.backbtn_Click);
             // 
             // clearbtn
             // 
@@ -126,6 +127,7 @@
             this.updatebtn.TabIndex = 54;
             this.updatebtn.Text = "UPDATE";
             this.updatebtn.UseVisualStyleBackColor = true;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // dltbtn
             // 
@@ -154,6 +156,7 @@
             this.dgvstafflist.Name = "dgvstafflist";
             this.dgvstafflist.Size = new System.Drawing.Size(386, 351);
             this.dgvstafflist.TabIndex = 51;
+            this.dgvstafflist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvstafflist_CellContentClick);
             // 
             // label6
             // 
